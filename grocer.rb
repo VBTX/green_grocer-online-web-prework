@@ -52,8 +52,8 @@ def consolidate_cart(cart)
 
       total = 0
 
-      cart2.each do |name, price_hash|
-        total += price_hash[:price] * price_hash[:count]
+      cart2.each do |item, hash|
+        total += hash[:price] * hash[:count]
       end
 
       total > 100 ? total * 0.9 : total
