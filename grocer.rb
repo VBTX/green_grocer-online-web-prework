@@ -36,14 +36,14 @@ def consolidate_cart(cart)
     hash
   end
 
-def apply_clearance(cart)
-  cart.each do |key, value|
-    if value[:clearance] == true
-      key[:price] *= 0.8
+  def apply_clearance(cart)
+    cart.each do |key, value|
+      if value[:clearance] == true
+          value[:price] = (value[:price] * 0.8).round(2)
+          end
+      end
+      cart
     end
-  end
-  cart
-end
 
 def checkout(cart, coupons)
   # code here
