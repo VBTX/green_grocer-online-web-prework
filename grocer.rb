@@ -17,9 +17,9 @@ def consolidate_cart(cart)
     coupons.each do |coupon|
       item = coupon[:item]
 
-      if !hash[item].nil? && hash[item][:count] >= coupon_hash[:num]
+      if !hash[item].nil? && hash[item][:count] >= coupon[:num]
         temp = {"#{item} W/COUPON" => {
-          :price => coupon_hash[:cost],
+          :price => coupon[:cost],
           :clearance => hash[item][:clearance],
           :count => 1
           }
@@ -30,7 +30,7 @@ def consolidate_cart(cart)
         else
           hash["#{item} W/COUPON"][:count] += 1
         end
-        hash[item][:count] -= coupon_hash[:num]
+        hash[item][:count] -= coupon[:num]
       end
     end
     hash
