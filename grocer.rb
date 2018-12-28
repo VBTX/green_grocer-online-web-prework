@@ -46,5 +46,15 @@ def consolidate_cart(cart)
     end
 
 def checkout(cart, coupons)
-  # code here
+  apply_coupons(cart, coupons)
+  apply_clearance(cart)
+  cart.each do |key, value|
+    total = 0
+    total += value[:price]
+    if total > 100
+      total = (total * 0.9).round(2)
+    else
+      total
+    end
+  end
 end
