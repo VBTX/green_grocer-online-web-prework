@@ -46,10 +46,9 @@ def consolidate_cart(cart)
     end
 
 def checkout(cart, coupons)
+  cart = consolidate_cart(items)
+  cart1 = apply_coupons(cart, coupons)
 
-  apply_coupons(cart, coupons)
-  apply_clearance(cart)
-  consolidate_cart(cart)
   cart.each do |key, value|
     total = 0
     total += value[:price]
